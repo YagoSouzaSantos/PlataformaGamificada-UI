@@ -11,7 +11,7 @@ import { Nivel } from '../../models/Nivel';
 export class NivelListaComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Nivel>()
-  readonly displayedColumns : Array<string> = ['nivelId','titulo','emblema']
+  readonly displayedColumns : Array<string> = ['nivelId','titulo','emblema','acoes']
 
   constructor(private nivelservice:  NivelService) { }
 
