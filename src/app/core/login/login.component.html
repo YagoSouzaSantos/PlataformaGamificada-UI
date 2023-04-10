@@ -1,0 +1,29 @@
+<div class="container">
+    <mat-card class="login-form box">
+        <mat-card-title>Acessar plataforma de ensino</mat-card-title>
+        <form [formGroup]="loginForm" class="login-form" (submit)="login()">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="exemplo@exemplo.com" formControlName="email" required>
+                <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">O campo e-mail é obrigatório</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input formControlName="senha" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('senha')?.errors?.['required']">O campo senha é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-actions>
+                <button type="submit" mat-raised-button color="primary">Entrar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

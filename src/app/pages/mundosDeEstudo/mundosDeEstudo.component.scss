@@ -1,0 +1,52 @@
+.container {
+    background-color: #0a192f;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #0a192f, #070333, #000000);
+  }
+
+.stars {
+    background-image: url('../../../assets/images/backgrounds/stardust.png');
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+  }
+
+.stars::after {
+    animation: twinkle 4s infinite;
+    background-image: url('../../../assets/images/backgrounds/stardust.png');
+    content: "";
+    height: 100%;
+    left: -50%;
+    position: absolute;
+    top: -50%;
+    width: 200%;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.planet {
+    background-size: cover;
+    border-radius: 50%;
+    height: 150px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 150px;
+    z-index: -1;
+}

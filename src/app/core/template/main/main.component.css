@@ -7,17 +7,23 @@
 }
 
 .sidenav .mat-toolbar {
-  background: inherit;
-  
+  background: inherit;  
 }
 
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #0C4E48 !important;
 }
 
 .mat-icon {
   padding-right: 10px;
+}
+
+.mat-drawer-container {
+  background-color: #ffffff;
+}
+
+p {
+  margin: 0;
 }

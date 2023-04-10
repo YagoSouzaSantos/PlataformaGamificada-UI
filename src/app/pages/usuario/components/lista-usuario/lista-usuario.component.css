@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+button {
+  margin: 25px;
+}
+
+.mat-column-acoes {
+  width: 300px;
+  text-align: center;
+  font-weight: bold;
+}

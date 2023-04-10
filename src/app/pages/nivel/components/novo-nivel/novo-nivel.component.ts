@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { NivelService } from './../../services/nivel.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -10,7 +12,8 @@ export class NovoNivelComponent implements OnInit {
 
   formulario: any;
 
-  constructor() { }
+  constructor(private nivelService: NivelService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -21,7 +24,15 @@ export class NovoNivelComponent implements OnInit {
     })
   }
 
-  get propriedade(){
+  get propriedade() {
     return this.formulario.controls;
+  }
+
+  PostForm(): void {
+    const nivel = this.formulario.value;
+    this.nivelService.PostNivel(nivel).subscribe(resultado => {
+      this.router.navigate(['nivel/lista']);
+
+    })
   }
 }
