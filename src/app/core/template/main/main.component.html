@@ -5,6 +5,12 @@
     </button>
     <span>Plataforma Gamificada</span>
     <span class="example-spacer"></span>
+    <div class="points" *ngIf="showComponent">
+      <mat-icon>star</mat-icon>
+      <span>Nível: {{ dataService.getLevel() }}</span>
+      <mat-icon>monetization_on</mat-icon>
+      <span>Moedas: {{ dataService.getPoints() }}</span>
+    </div>
   </mat-toolbar>
 </p>
 <router-outlet></router-outlet>

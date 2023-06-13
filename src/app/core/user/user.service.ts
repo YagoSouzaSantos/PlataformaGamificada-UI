@@ -13,6 +13,7 @@ export class UserService {
 
   private userSubject = new Subject<User>();
   private userName: string;
+  private userType: number;
 
   constructor(private tokenService: TokenService) { 
     this.tokenService.hasToken() && 
@@ -49,6 +50,9 @@ export class UserService {
     return this.userName;
   }
 
+  getUserType(){
+    return this.userType;
+  }
 
 }
 

@@ -11,6 +11,7 @@
 }
 
 .mat-toolbar.mat-primary {
+  background-color: black;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -26,4 +27,15 @@
 
 p {
   margin: 0;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 12px;
 }

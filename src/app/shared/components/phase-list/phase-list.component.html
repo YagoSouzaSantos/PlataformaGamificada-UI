@@ -1,0 +1,13 @@
+<div class="card-container">
+  <div *ngFor="let phase of phases" class="card">
+    <mat-card (click)="goToActivities(phase.id)">
+      <mat-card-header>
+        <mat-card-title>{{phase.title}}</mat-card-title>
+      </mat-card-header>
+      <div class="phase" fxLayout="column" fxLayoutAlign="center center">
+        <img [src]="getRandomImageUrl()">
+        <p></p>
+      </div>
+    </mat-card>
+  </div>  
+</div>

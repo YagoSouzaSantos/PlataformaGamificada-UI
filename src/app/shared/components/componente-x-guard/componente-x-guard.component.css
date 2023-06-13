@@ -1,0 +1,32 @@
+@keyframes moveUpDiagonal {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+::ng-deep body {
+    background-image: url('../../../../assets/images/backgrounds/stardust.png');
+    height: 100vh;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+}
+
+.disable-body-style {
+    background-image: none;
+    height: auto;
+    position: static;
+    background-color: transparent;
+}
+
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: moveUpDiagonal 5s infinite;
+}

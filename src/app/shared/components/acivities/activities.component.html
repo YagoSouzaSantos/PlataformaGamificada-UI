@@ -1,0 +1,24 @@
+<div class="card-container">
+  <div *ngFor="let activity of activities" class="card">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{activity.title}}</mat-card-title>
+      </mat-card-header>
+
+      <div class="phase" fxLayout="column" fxLayoutAlign="center center" (click)="download(activity)">
+        <img [src]="getRandomImageUrl()" alt="Imagem Aleatória">
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="card">
+    <mat-card (click)="goToProof()" >
+      <mat-card-title>Prova de conhecimentos</mat-card-title>
+      <div class="phase" fxLayout="column" fxLayoutAlign="center center">
+        <img [src]="bossImage">
+        <p></p>
+      </div>
+    </mat-card>
+  </div>
+</div>

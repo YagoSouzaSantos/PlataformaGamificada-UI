@@ -1,8 +1,7 @@
-import { TokenService } from './../../core/Token/token.service';
-import { UserService } from './../../core/user/user.service';
-import { User } from './../../core/user/user';
-import { Component, OnInit } from '@angular/core';
-import jwt_decode from 'jwt-decode';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { WorldsWizardComponent } from 'src/app/shared/components/worlds-wizard/worlds-wizard.component';
 
 @Component({
   selector: 'app-mundosDeEstudo',
@@ -11,18 +10,62 @@ import jwt_decode from 'jwt-decode';
 })
 export class MundosDeEstudoComponent implements OnInit {
 
-  private usuario: User;
 
-  constructor(private tokenService: TokenService) { }
+  planets = [
+    {
+      id: 1, url: '../../../assets/images/planets/planet_01.png',
+      title: 'Conhecimentos Basilares e Primordiais',
+      background: '../../../../../assets/images/backgrounds/forest.jpg'
+    },
+    {
+      id: 2,
+      url: '../../../assets/images/planets/planet_02.png',
+      title: 'Conhecimentos Intermediários e Necessários',
+      background: '../../../../../assets/images/backgrounds/iceberg.jpg'
+    },
+    { id: 3, url: '../../../assets/images/planets/planet_03.png', title: 'Conhecimentos Avançados e Impulsionadores' },
+  ];
+
+  constructor(
+    private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit() {
-    
-    const token = this.tokenService.getToken();
-    const payload : any = jwt_decode(token ?? '');
-    const user = payload.sub;
-    console.log(user); 
+    setTimeout(() => {
+      this.openDialog();
+    }, 500);
+
+    const audio = new Audio('../../../assets/audio/snow.mp3');
+    audio.play();
+
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(WorldsWizardComponent, {
+      data: {
+        parameter: 'purpose',
+        title: 'Descrição e objetivo do jogo',
+        imagePath: '../../../assets/images/worlds-wizard/instructions.png'
+      }
+    });
+  }
+
+  phaseBlocked(): void {
+    const dialogRef = this.dialog.open(WorldsWizardComponent, {
+      data: {
+        parameter: 'phaseblocked',
+        title: 'Nível insuficiente',
+        imagePath: '../../../assets/images/worlds-wizard/blocked.png'
+      }
+    });
+  }
+
+  onPlanetClick(planet: any) {
+    if (planet.id == 3) {
+      this.phaseBlocked();
+    }
+    else {
+      this.router.navigate(['/earth'], { queryParams: { planet: JSON.stringify(planet) } });
+    }
+  }
 }
-
-

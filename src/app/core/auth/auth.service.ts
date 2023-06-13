@@ -1,11 +1,10 @@
-import { UserService } from './../user/user.service';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import jwt_decode from 'jwt-decode';
+import { throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 import { TokenService } from '../Token/token.service';
 import { User } from '../user/user';
-import { Observable, throwError } from 'rxjs';
-
 
 
 @Injectable({
@@ -35,7 +34,6 @@ export class AuthService {
       .pipe(tap(res => {
         const authToken = JSON.stringify(res.body, ['token']).substring(10, 177);
         this.tokenService.setToken(authToken);
-        console.log(`User ${user.email} authenticated with token ${authToken}`);
       }))
       .pipe(
         retry(2),
@@ -56,5 +54,9 @@ export class AuthService {
     return throwError(errorMessage);
   };
 
+  decodeToken(token: any): any {
+    const decoded = jwt_decode(token);
+    return decoded;
+  }
 }
 

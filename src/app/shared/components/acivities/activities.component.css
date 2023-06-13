@@ -1,0 +1,73 @@
+.phase {
+  margin-top: 10%;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.phase p {
+  margin: 0;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+img {
+  max-width: 250px;
+  opacity: 1;
+
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url('../../../../assets/images/backgrounds/estudo.jpg'); */
+  min-height: 100%;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+
+  background: rgb(55, 34, 195);
+  background: linear-gradient(0deg, rgba(55, 34, 195, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  opacity: 0.8;
+}
+
+.card:hover {
+  animation: pulse 0.6s linear infinite;
+  opacity: 1;
+}
+
+
+.card:nth-child(3n+0) {
+  margin-right: 0;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: calc(100% - 20px);
+  }
+
+  .card:nth-child(2n+0) {
+    margin-right: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

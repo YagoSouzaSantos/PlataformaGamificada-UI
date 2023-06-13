@@ -1,3 +1,12 @@
 <div class="container">
-  <div class="stars"></div>
+  <div class="stars">
+    <div class="flex-container" fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxFlex fxLayoutAlign="center" class="planet" *ngFor="let planet of planets">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img src="{{ planet.url }}" (click)="onPlanetClick(planet)">
+          <p>{{planet.title}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
