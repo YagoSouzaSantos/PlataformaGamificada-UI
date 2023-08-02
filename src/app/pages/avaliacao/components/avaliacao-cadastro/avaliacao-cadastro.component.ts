@@ -38,7 +38,7 @@ export class AvaliacaoCadastroComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.atualizarFases();
+
   }
 
   atualizarFases(): void {
