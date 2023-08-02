@@ -5,7 +5,7 @@ import { AvaliacaoCadastroComponent } from './components/avaliacao-cadastro/aval
 
 const routes: Routes = [{
   path: '', component: AvaliacaoComponent,
-  children: [{ path: 'cadastro', component: AvaliacaoCadastroComponent },
+  children: [{ path: 'cadastro', component: AvaliacaoCadastroComponent }
   ]
 }];
 
