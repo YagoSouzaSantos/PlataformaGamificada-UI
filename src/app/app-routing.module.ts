@@ -30,9 +30,9 @@ const routes: Routes = [
 
   
   { path: 'nivel', loadChildren: () => import('./pages/nivel/nivel.module').then(m => m.NivelModule) },
-  { path: 'avaliacao', loadChildren: () => import('./pages/avaliacao/avaliacao.module').then(m => m.AvaliacaoModule) },
   { path: 'material', loadChildren: () => import('./pages/material-auxiliar/material-auxiliar.module').then(m => m.MaterialAuxiliarModule) },
   { path: 'usuario', loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule) },
+  { path: 'avaliacao', loadChildren: () => import('./pages/avaliacao/avaliacao.module').then(m => m.AvaliacaoModule) },
 
 ];
 

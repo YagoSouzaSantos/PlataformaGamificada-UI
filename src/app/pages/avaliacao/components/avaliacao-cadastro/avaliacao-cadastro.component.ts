@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Phase } from 'src/app/pages/nivel/models/Phase';
 import { PhaseService } from 'src/app/pages/nivel/services/phase.service';
 

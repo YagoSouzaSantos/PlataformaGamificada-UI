@@ -14,9 +14,8 @@ import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
-    AvaliacaoComponent,   
-    AvaliacaoCadastroComponent,
-    AvaliacaoListaComponent
+    AvaliacaoComponent,
+    AvaliacaoCadastroComponent
   ],
   imports: [
     CommonModule,
@@ -28,9 +27,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatRadioModule
   ],
   exports: [
-    AvaliacaoComponent,   
-    AvaliacaoCadastroComponent,
-    AvaliacaoListaComponent
+    AvaliacaoComponent,
+    AvaliacaoCadastroComponent
   ]
 })
 export class AvaliacaoModule { }

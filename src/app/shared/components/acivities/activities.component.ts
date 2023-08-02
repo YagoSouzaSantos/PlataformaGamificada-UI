@@ -32,15 +32,12 @@ export class ActivitiesComponent implements OnInit {
   ngOnInit() {
     this.phaseId = Number(this.route.snapshot.paramMap.get('phaseId'));
     this.getActivities(this.phaseId);
-
-    // const audio = new Audio('../../../../assets/audio/snow.mp3');
+   
 
     const todosOsAudios = document.querySelectorAll('audio');
     todosOsAudios.forEach((audioExistente: HTMLAudioElement) => {
       audioExistente.pause();
     });
-
-    // audio.play();
 
     this.randomImageUrl = this.getRandomImageUrl();
     this.cdr.detectChanges();
@@ -62,7 +59,7 @@ export class ActivitiesComponent implements OnInit {
       '../../../assets/images/study/study02.png',
       '../../../assets/images/study/study03.png'
     ];
-    const randomIndex = Math.floor(Math.random() * this.images.length);
+
     return this.images[2];
   }
 
