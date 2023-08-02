@@ -1,3 +1,4 @@
+import { MatSelectModule } from '@angular/material/select';
 import { HeaderModule } from 'src/app/shared/components/header/header.module';
 import { HomeModule } from 'src/app/core/components/home/home.module';
 import { ListaMaterialAuxiliarComponent } from './lista-material-auxiliar/lista-material-auxiliar.component';
@@ -11,6 +12,13 @@ import { MaterialAuxiliarRoutingModule } from './material-auxiliar-routing.modul
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+
+
 
 
 @NgModule({
@@ -23,7 +31,13 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    FormsModule,
+    MatCardModule,
+    HttpClientModule,
+    MatDividerModule,
+    MatTableModule
   ],
   declarations: [MaterialAuxiliarComponent, AddMaterialComponent, ListaMaterialAuxiliarComponent]
 })

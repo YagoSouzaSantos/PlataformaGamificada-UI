@@ -2,6 +2,7 @@ import { shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { MusicaService } from 'src/app/shared/services/musica.service';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,15 @@ export class HomeComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private musicaService: MusicaService
+    
+    ) {}
 
   ngOnInit(): void {
+
+    this.musicaService.pausarMusica();
 
   }
 

@@ -9,7 +9,7 @@ import jwt_decode from 'jwt-decode';
 import { TokenService } from '../Token/token.service';
 import { DataService } from '../template/main/services/data.service';
 import { UsuariosService } from '../template/main/services/usuarios.service';
-import { UserService } from '../user/user.service';
+import { MusicaService } from 'src/app/shared/services/musica.service';
 
 @Component({
   selector: 'app-login',
@@ -24,19 +24,21 @@ export class LoginComponent implements OnInit {
   showFiller = false;
 
   constructor(
+    private musicaService: MusicaService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private tokenService: TokenService,
     private dataService: DataService,
-    private usuariosService: UsuariosService
+    private usuariosService: UsuariosService,
   ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['yagossantos32@gmail.com', Validators.required],
-      senha: ['123456', Validators.required]
+      email: ['', Validators.required],
+      senha: ['', Validators.required]
     });
+    this.musicaService.pausarMusica();
   }
 
   login() {
@@ -51,12 +53,25 @@ export class LoginComponent implements OnInit {
       if (decodedToken.jti == 0) {
         this.usuariosService.buscarUsuarioPorId(decodedToken.sub).subscribe(
           (response) => {
+            
             this.dataService.setLevel(response.nivel)
-            this.dataService.setPoints(response.pontuacao)      
-            this.dataService.setId(decodedToken.sub)     
+            this.dataService.setPoints(response.pontuacao)
+            this.dataService.setId(decodedToken.sub)
+            this.dataService.setAvatar(response.avatar)
+            this.dataService.setUser(response.nome)
+            this.dataService.setLifes(response.vidas)
+            this.dataService.setFuel(response.combustivel)
+            
+            this.usuariosService.atualizarAcesso(decodedToken.sub).subscribe();
+            
+
+            if (response.avatar == 0) {
+              this.router.navigate(['avatarselect'])
+            } else {
+              this.router.navigate(['mundosdeestudo'])
+            }
           });
 
-        this.router.navigate(['mundosdeestudo'])
 
       } else {
         this.router.navigate(['home'])

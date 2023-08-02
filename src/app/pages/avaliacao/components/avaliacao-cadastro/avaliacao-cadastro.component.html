@@ -1,1 +1,48 @@
-<p>avaliacao-cadastro works!</p>
+<app-header>Adicionar questão para estudo</app-header>
+<div class="content">
+    <mat-card class="card">
+
+        <mat-card-title>Dados da questão</mat-card-title>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Mundo</mat-label>
+            <mat-select [(ngModel)]="mundoSelecionado" name="mundo" (ngModelChange)="atualizarFases()">
+                <mat-option *ngFor="let mundo of mundos" [value]="mundo.id">
+                    {{ mundo.descricao }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width ">
+            <mat-label>Fase</mat-label>
+            <mat-select [(ngModel)]="faseSelecionada" name="fase">
+                <mat-option *ngFor="let fase of fases" [value]="fase.id">
+                    {{ fase.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <form (ngSubmit)="submitForm()">
+            <mat-form-field>
+              <mat-label>Questão</mat-label>
+              <textarea matInput [(ngModel)]="formData.text" name="text"></textarea>
+            </mat-form-field>
+          
+            <div *ngFor="let answer of formData.answers; let i = index">
+              <mat-form-field>
+                <mat-label>Resposta {{ i + 1 }}</mat-label>
+                <input matInput [(ngModel)]="answer.text" name="answer{{ i }}">
+              </mat-form-field>
+          
+              <mat-radio-group [(ngModel)]="answer.correct" name="correctAnswer">
+                <mat-radio-button [value]="true">Correta</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+          </form>
+
+
+    </mat-card>
+
+</div>

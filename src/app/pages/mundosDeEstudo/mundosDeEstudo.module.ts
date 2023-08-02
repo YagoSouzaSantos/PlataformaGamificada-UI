@@ -15,6 +15,7 @@ import { ActivitiesComponent } from 'src/app/shared/components/acivities/activit
 import { ComponenteXGuard } from 'src/app/shared/components/componente-x-guard/componente-x-guard.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ProofComponent } from 'src/app/shared/components/proof/proof.component';
+import { UsuarioModule } from '../usuario/usuario.module';
 
 
 
@@ -28,7 +29,8 @@ import { ProofComponent } from 'src/app/shared/components/proof/proof.component'
     FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
-    MatRadioModule    
+    MatRadioModule,
+    UsuarioModule
   ],
   declarations: [MundosDeEstudoComponent, PhaseListComponent, EarthComponent, ActivitiesComponent, ComponenteXGuard, ProofComponent],
   exports: [MundosDeEstudoComponent, PhaseListComponent, EarthComponent,  ActivitiesComponent],

@@ -11,3 +11,10 @@ button {
   text-align: center;
   font-weight: bold;
 }
+
+table {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}

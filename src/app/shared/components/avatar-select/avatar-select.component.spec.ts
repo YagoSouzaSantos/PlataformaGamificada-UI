@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ListaMaterialAuxiliarComponent } from './lista-material-auxiliar.component';
+import { AvatarSelectComponent } from './avatar-select.component';
 
-describe('ListaMaterialAuxiliarComponent', () => {
-  let component: ListaMaterialAuxiliarComponent;
-  let fixture: ComponentFixture<ListaMaterialAuxiliarComponent>;
+describe('AvatarSelectComponent', () => {
+  let component: AvatarSelectComponent;
+  let fixture: ComponentFixture<AvatarSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListaMaterialAuxiliarComponent ]
+      declarations: [ AvatarSelectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListaMaterialAuxiliarComponent);
+    fixture = TestBed.createComponent(AvatarSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,25 +1,22 @@
-<app-header>Materiais para estudo</app-header>
+<app-header>Atividades para estudo</app-header>
 <div>
-  <button mat-raised-button color="primary" [routerLink]="['/adicionarmaterial']" routerLinkActive="router-link-active" >ADICIONAR ATIVIDADES</button>
+  <button mat-raised-button color="primary" routerLink="/material/adicionarmaterial">Adicionar atividade</button>
 </div>
 
-<div class="row">
-  <mat-expansion-panel class="item-12">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Atividades
-      </mat-panel-title>
-      <mat-panel-description>
-        Clique para Carregar as atividades
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
+<div>
+ 
+  <table *ngIf="atividades" mat-table [dataSource]="atividades" class="mat-elevation-z8">
+    <ng-container matColumnDef="phaseId">
+      <th mat-header-cell *matHeaderCellDef>ID da Fase de origem</th>
+      <td mat-cell *matCellDef="let atividade">{{ atividade.phase }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Título do documento</th>
+      <td mat-cell *matCellDef="let atividade">{{ atividade.title }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['phaseId', 'title']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['phaseId', 'title']"></tr>
+  </table>
 </div>
-
-<!-- 
-<div class="row">
-  <mat-form-field class="item-12" appearance="fill">
-    <mat-label>teste</mat-label>
-    <input matInput>
-  </mat-form-field>
-</div> -->

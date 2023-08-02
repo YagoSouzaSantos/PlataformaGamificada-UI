@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card-container">
+    <mat-card *ngFor="let avatar of avatares" class="card">
+      <mat-card-content>
+        <div class="phase" fxLayout="column" fxLayoutAlign="center center">
+          <img [src]="avatar.url" (click)="selecionarAvatar(avatar.id)">
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="title">
+    <h1>Escolha seu Avatar</h1>
+  </div>
+</div>

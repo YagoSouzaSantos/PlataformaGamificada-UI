@@ -15,9 +15,15 @@ export class UsuariosService {
     return this.http.get(url);
   }
   
-  atualizarValores(id: number, pontuacao: number, nivel: number) {
+
+  atualizarAcesso(id: number): Observable<any>  {
+    const url = `${this.apiUrl}/acesso/${id}`;
+    return this.http.put(url, null); // Aqui, estamos enviando um corpo nulo (none) na requisição PUT
+  }
+  
+  atualizarValores(id: number, pontuacao: number, nivel: number, combustivel: number, vidas: number) {
     const url = `${this.apiUrl}/${id}`;
-    const body = { pontuacao, nivel };
+    const body = { pontuacao, nivel, combustivel, vidas };
 
     return this.http.put(url, body);
   }

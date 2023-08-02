@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WorldsWizardComponent } from 'src/app/shared/components/worlds-wizard/worlds-wizard.component';
+import { MusicaService } from 'src/app/shared/services/musica.service';
 
 @Component({
   selector: 'app-mundosDeEstudo',
@@ -27,6 +28,7 @@ export class MundosDeEstudoComponent implements OnInit {
   ];
 
   constructor(
+    private musicaService: MusicaService,
     private dialog: MatDialog,
     private router: Router) { }
 
@@ -35,9 +37,7 @@ export class MundosDeEstudoComponent implements OnInit {
       this.openDialog();
     }, 500);
 
-    const audio = new Audio('../../../assets/audio/snow.mp3');
-    audio.play();
-
+    this.musicaService.reproduzirMusica();
   }
 
   openDialog(): void {

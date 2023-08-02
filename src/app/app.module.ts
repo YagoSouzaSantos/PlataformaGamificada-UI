@@ -15,6 +15,8 @@ import { MundosDeEstudoModule } from './pages/mundosDeEstudo/mundosDeEstudo.modu
 import { WorldsWizardModule } from './shared/components/worlds-wizard/worlds-wizard.module';
 import { LoginModule } from './core/login/login.module';
 import {MatRadioModule} from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { AvaliacaoModule } from './pages/avaliacao/avaliacao.module';
 
 
 
@@ -26,18 +28,21 @@ import {MatRadioModule} from '@angular/material/radio';
   imports: [
     HttpClientModule,
     BrowserModule,
+    CoreModule,
     AppRoutingModule,
+    LoginModule,
     CommonModule,
     BrowserAnimationsModule,
-    CoreModule,
-    LoginModule,
     MaterialAuxiliarModule,
     RouterModule,
     MatDialogModule,
     FlexLayoutModule,
-    WorldsWizardModule,
+    MatRadioModule,
+    MatInputModule,
+
     MundosDeEstudoModule,
-    MatRadioModule
+    WorldsWizardModule,
+    AvaliacaoModule,
   ],
   providers: [
   ],

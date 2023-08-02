@@ -1,38 +1,43 @@
 import { Router } from '@angular/router';
-import { NivelService } from './../../services/nivel.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { PhaseService } from '../../services/phase.service';
 
 @Component({
   selector: 'app-novo-nivel',
   templateUrl: './novo-nivel.component.html',
   styleUrls: ['./novo-nivel.component.css']
 })
-export class NovoNivelComponent implements OnInit {
+export class NovoNivelComponent {
+ 
+  formData = {
+    title: '',
+    world: ''
+  };
 
-  formulario: any;
+  worldOptions = [
+    { value: '1', label: 'Mundo de conhecimento 1' },
+    { value: '2', label: 'Mundo de conhecimento 2' },
+    { value: '3', label: 'Mundo de conhecimento 3' }
+  ];
 
-  constructor(private nivelService: NivelService,
-    private router: Router) { }
+  constructor(
+    private phaseService : PhaseService,
+    private router : Router
+  ) {}
 
-  ngOnInit(): void {
-
-    this.formulario = new FormGroup({
-      titulo: new FormControl(null),
-      descricao: new FormControl(null),
-      emblema: new FormControl('folder')
-    })
+  submitForm() {
+    if (this.formData.world && this.formData.title) {
+      this.phaseService.enviarFormulario(this.formData)
+        .subscribe(
+          response => {
+            alert('Nova fase gravada com sucesso!');
+            this.router.navigate(['nivel/lista']);
+          },
+          error => {
+            console.error('Erro ao enviar formulário:', error);
+          }
+        );
+    }
   }
-
-  get propriedade() {
-    return this.formulario.controls;
-  }
-
-  PostForm(): void {
-    const nivel = this.formulario.value;
-    this.nivelService.PostNivel(nivel).subscribe(resultado => {
-      this.router.navigate(['nivel/lista']);
-
-    })
-  }
+ 
 }

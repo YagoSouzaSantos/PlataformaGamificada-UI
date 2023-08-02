@@ -1,38 +1,22 @@
-<app-header>Adicionar novo nível</app-header>
+<app-header>Adicionar nova fase de aprendizado</app-header>
 <div>
     <mat-card class="divCard">
-        <form [formGroup]="formulario" (ngSubmit)="PostForm()">
-            <mat-card-content>
-                <div>
-                    <mat-form-field class="my-form-field">
-                        <mat-label>Título</mat-label>
-                        <input type="text" matInput formControlName="titulo" placeholder="Título do nível" class="primarycolor">
-                    </mat-form-field>
-                </div>
-
-                <div>
-                    <mat-form-field class="my-form-field">
-                        <mat-label>Descrição</mat-label>
-                        <textarea matInput rows="4" placeholder="Informe a descrição detalhada dos temas que serão abordados no nível" formControlName="descricao"></textarea>                      
-                    </mat-form-field>
-                </div>
-
-                <div>
-                    <mat-form-field class="my-form-field">
-                        <mat-label>Emblema</mat-label>
-                        <input type="text" matInput formControlName="emblema">
-                    </mat-form-field>
-                </div>
-            </mat-card-content>
-
+        <form (ngSubmit)="submitForm()" #myForm="ngForm">
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input matInput name="title" [(ngModel)]="formData.title" required>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>World</mat-label>
+              <mat-select name="world" [(ngModel)]="formData.world" required>
+                <mat-option *ngFor="let option of worldOptions" [value]="option.value">
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
             <mat-divider></mat-divider>
-
-            <mat-card-actions>
-                <div>
-                    <button type="submit" mat-raised-button class="primarycolor">Salvar</button>
-                    <a mat-stroked-button routerLink="/nivel/lista">Cancelar</a>
-                </div>
-            </mat-card-actions>
-        </form>
+            <button mat-raised-button color="primary" [disabled]="!myForm.valid">Salvar nova fase</button>
+          </form>          
     </mat-card>
 </div>

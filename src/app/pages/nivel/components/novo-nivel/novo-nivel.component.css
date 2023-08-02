@@ -13,3 +13,7 @@
 .container {
     justify-content: center;
 }
+
+button {
+    margin-top: 15px;
+}

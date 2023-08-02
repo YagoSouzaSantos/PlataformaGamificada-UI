@@ -1,0 +1,44 @@
+.floating-component {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 12px;
+ 
+}
+
+.points mat-icon {
+  color: rgb(238, 209, 44);
+}
+
+.avatar-image {
+  max-width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.rounded {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.fuel {
+  display: flex;
+  padding-top: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+.favorite mat-icon {
+  color: red;
+}

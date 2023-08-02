@@ -1,0 +1,14 @@
+<h1><mat-icon>shop</mat-icon>Loja</h1>
+
+<mat-grid-list cols="3" rowHeight="200px" gutterSize="10px">
+    <mat-grid-tile><img src="./assets/images/bomba.png"></mat-grid-tile>
+    <mat-grid-tile><p><b>Comprar combustível $50</b></p></mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="comprarCombustivel()">comprar</button></mat-grid-tile>
+
+    <mat-grid-tile><img src="./assets/images/vidas.png"></mat-grid-tile>
+    <mat-grid-tile><p><b>Comprar vidas $1000</b></p></mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="comprarVidas()">comprar</button></mat-grid-tile>
+</mat-grid-list>
+
+<!-- Botão para fechar o modal -->
+<button mat-button (click)="fecharModal()">Fechar</button>

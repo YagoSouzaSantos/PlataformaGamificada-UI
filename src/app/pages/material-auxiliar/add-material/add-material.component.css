@@ -1,0 +1,23 @@
+.content {
+    min-height: 90vh;
+}
+
+.card {
+    margin-top: 20px;
+    padding: 20px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.full-width {
+    width: 100%;
+}
+
+button {
+    margin-top: 15px;
+}

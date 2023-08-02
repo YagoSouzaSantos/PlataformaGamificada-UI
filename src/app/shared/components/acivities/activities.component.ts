@@ -18,7 +18,7 @@ export class ActivitiesComponent implements OnInit {
   images: string[];
   randomImageUrl: string;
   bossImage = '../../../assets/images/livro.jpg';
-
+  
   constructor(
     private route: ActivatedRoute,
     private activityService: ActivityService,
@@ -33,14 +33,14 @@ export class ActivitiesComponent implements OnInit {
     this.phaseId = Number(this.route.snapshot.paramMap.get('phaseId'));
     this.getActivities(this.phaseId);
 
-    const audio = new Audio('../../../../assets/audio/snow.mp3');
+    // const audio = new Audio('../../../../assets/audio/snow.mp3');
 
     const todosOsAudios = document.querySelectorAll('audio');
     todosOsAudios.forEach((audioExistente: HTMLAudioElement) => {
       audioExistente.pause();
     });
 
-    audio.play();
+    // audio.play();
 
     this.randomImageUrl = this.getRandomImageUrl();
     this.cdr.detectChanges();
@@ -63,7 +63,7 @@ export class ActivitiesComponent implements OnInit {
       '../../../assets/images/study/study03.png'
     ];
     const randomIndex = Math.floor(Math.random() * this.images.length);
-    return this.images[randomIndex];
+    return this.images[2];
   }
 
   ngAfterViewChecked() {
@@ -77,9 +77,10 @@ export class ActivitiesComponent implements OnInit {
       this.dataService.getId(),
       this.dataService.getPoints(),
       this.dataService.getLevel(),
+      this.dataService.getFuel(),
+      this.dataService.getLifes(),
     ).subscribe(
       response => {
-        console.log('Usuário atualizado com sucesso:', response);
         this.downloadFile(activity.title)
         
       },
@@ -115,7 +116,22 @@ export class ActivitiesComponent implements OnInit {
   }
 
   goToProof() {
-    this.router.navigate(['/proof', this.phaseId]);
+    if(this.dataService.getLifes() == 0){
+      this.openDialogBlocked("Sem vidas disponíveis para realizar teste de conhecimento. Retorne amanhã!")
+    }
+    else {
+      this.router.navigate(['/proof', this.phaseId]);
+    }
+
   }
 
+  openDialogBlocked(text: any): void {
+    const dialogRef = this.dialog.open(WorldsWizardComponent, {
+      data: {
+        text: text,        
+        title: '!!! Sem vidas disponíveis !!!',
+        imagePath: '../../../assets/images/worlds-wizard/instructions.png'
+      }
+    });
+  }
 }

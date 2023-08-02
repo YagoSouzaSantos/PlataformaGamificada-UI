@@ -1,9 +1,10 @@
 <div class="container">
-  <h2>{{title}}</h2>
-  <h3>{{subtitle}}</h3>
+  <h2>{{ title }}</h2>
+  <h3>{{ subtitle }}</h3>
   <div class="flex-container message" fxLayout="row">
-    <div> {{message?.message}} </div>
-    <img src={{imagePath}}>
+    <div *ngIf="message?.message; else elseBlock">{{ message?.message }}</div>
+    <ng-template #elseBlock>{{ message }}</ng-template>
+    <img src="{{ imagePath }}">
   </div>
 </div>
 <button mat-button (click)="dialogRef.close()" color="primary">Fechar</button>

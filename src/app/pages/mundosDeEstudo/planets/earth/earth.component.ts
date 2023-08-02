@@ -8,8 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EarthComponent implements OnInit {
 
-  planet : any;
   @Input() backgroundImage= '';
+  
+  planet : any;
   showComponentX: boolean = true;
 
   constructor(private route: ActivatedRoute) { }

@@ -3,7 +3,7 @@ import { HomeComponent } from './../../core/components/home/home.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -17,7 +17,8 @@ import { NivelListaComponent } from './components/nivel-lista/nivel-lista.compon
 import { NovoNivelComponent } from './components/novo-nivel/novo-nivel.component';
 import { NivelRoutingModule } from './nivel-routing.module';
 import { NivelComponent } from './nivel.component';
-import { NivelService } from './services/nivel.service';
+import { MatSelectModule } from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -40,10 +41,12 @@ import { NivelService } from './services/nivel.service';
     MatFormFieldModule,
     MatInputModule,
     HeaderModule,
-    HomeModule
+    HomeModule,
+    MatSelectModule,
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [
-    NivelService
   ]
 })
 export class NivelModule { }

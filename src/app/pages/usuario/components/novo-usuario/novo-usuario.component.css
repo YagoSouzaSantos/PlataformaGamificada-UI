@@ -1,45 +1,18 @@
-.container {
-
-    justify-content: center;
+.content {
+    min-height: 90vh;
 }
-
-
-.divCard {
+.card {
     margin-top: 20px;
     padding: 20px;
-    width: 50%;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
-}
 
-.mat-form-field.mat-form-field {
-   width: 60%; 
-   
-}
-
-img {
-    padding-left: 18px;
-    width: 150px;    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .full-width {
     width: 100%;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-label {
-    padding: 10px 10px;
-    margin-bottom: 10px;
-    width: 150px;
-    background-color: rgb(63, 81, 181);
-    border-radius: 5px;
-    color: #FFF;
-    text-transform: uppercase;
-    text-align: center;
-    display: block;
-    margin-top: 10px;
-    cursor: pointer;
 }

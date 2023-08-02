@@ -10,7 +10,6 @@ const URL = 'http://localhost:8091/worldswizard/';
   styleUrls: ['./worlds-wizard.component.css']
 })
 export class WorldsWizardComponent implements OnInit {
-
   title = 'Mensagem do mago dos mundos';
   subtitle: any;
   parameterValue: any;
@@ -19,16 +18,24 @@ export class WorldsWizardComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<WorldsWizardComponent>,
     private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: { parameter: any, title: any, imagePath: any }
+    @Inject(MAT_DIALOG_DATA) public data: { text: any, parameter: any, title: any, imagePath: any }
   ) { }
 
   ngOnInit(): void {
-    this.http.get(URL + `${this.data.parameter}`)
-      .subscribe((response: any) => {
-        this.message = response;
-        this.imagePath = this.data.imagePath;
-        this.subtitle = this.data.title;
-      });
+    if (this.data.parameter) {
+      this.http.get(URL + `${this.data.parameter}`)
+        .subscribe(
+          (response: any) => {
+            this.message = response;
+            this.imagePath = this.data.imagePath;
+            this.subtitle = this.data.title;
+          }
+        );
+    } else {
+            this.message = this.data.text;
+            this.imagePath = this.data.imagePath;
+            this.subtitle = this.data.title;
+    }
   }
-
 }
+

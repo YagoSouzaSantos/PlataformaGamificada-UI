@@ -1,79 +1,27 @@
-<div>
-  <mat-card>
-    <mat-card-title>Novo usuário</mat-card-title>
-    <mat-card-subtitle>Informe os dados do novo usuário</mat-card-subtitle>
+<app-header>Cadastro de novo usuário</app-header>
+<div class="content">
+  <mat-card class="card">
 
-    <table class="full-width">
-      <td>
-        <img mat-card-image
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoOi-sXItfUXzDgn0RE4a3GVrk5yb8dLwxOA&usqp=CAU">
-        <div>
-          <label for="arquivo">Selecionar imagem</label>
-          <input type="file" id="arquivo">
-        </div>
+    <form [formGroup]="usuarioForm" (ngSubmit)="cadastrarUsuario()">
+      <mat-form-field class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" required>
+      </mat-form-field>
 
-      </td>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" autocomplete="username" required>
+      </mat-form-field>
 
-      <tr>
-        <td>
-          <mat-form-field appearance="fill">
-            <mat-label>Nome</mat-label>
-            <input matInput>
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-              placeholder="Ex. pat@example.com">
-            <mat-hint>Errors appear instantly!</mat-hint>
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </td>
-      <tr>
-        <td>
-          <mat-form-field appearance="fill">
-            <mat-label>Defina uma senha padrão</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field appearance="fill">
-            <mat-label>Confirme a senha</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+      <mat-form-field class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="senha" autocomplete="current-password" required>
+      </mat-form-field>
 
+      <button mat-raised-button color="primary" type="submit">Cadastrar</button>
 
+    </form>
 
-
-
-
-
-
-
-    <mat-card-actions>
-      <button mat-flat-button color="primary">Salvar</button>
-      <button mat-flat-button>Cancelar</button>
-    </mat-card-actions>
   </mat-card>
+
 </div>

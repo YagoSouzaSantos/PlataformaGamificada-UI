@@ -1,14 +1,13 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 @Component({
   selector: 'app-novo-usuario',
@@ -16,16 +15,46 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./novo-usuario.component.css']
 })
 export class NovoUsuarioComponent implements OnInit {
+  usuarioForm: FormGroup;
 
-  hide = true;
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router,
+    private http: HttpClient) { }
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  ngOnInit(): void {
+    this.usuarioForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', Validators.required],
+    });
+  }
+  cadastrarUsuario(): void {
+    if (this.usuarioForm.invalid) {
+      console.log('formulario invalido')
+      return;
+    }
 
-  matcher = new MyErrorStateMatcher();
+    const usuarioData = {
+      nome: this.usuarioForm.get('nome')?.value,
+      email: this.usuarioForm.get('email')?.value,
+      senha: this.usuarioForm.get('senha')?.value,
+      tipoUsuario: 0, // Valor padrão para tipoUsuario
+      nivel: 0, // Valor padrão para nivel
+      pontuacao: 0 // Valor padrão para pontuacao
+    };
 
-  constructor() { }
-
-  ngOnInit() {
+    this.http.post('http://localhost:8091/usuarios', usuarioData, httpOptions)
+      .subscribe(
+        response => {
+          alert('Novo usuário cadastrado com sucesso!');
+          this.router.navigate(['usuario/lista']);
+        },
+        error => {
+          console.error('Erro na solicitação', error);
+          // Trate o erro de acordo com sua lógica de manipulação de erros
+        }
+      );
   }
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Nivel } from '../../models/Nivel';
-import { NivelService } from '../../services/nivel.service';
+import { Phase } from '../../models/Phase';
+import { PhaseService } from '../../services/phase.service';
 
 @Component({
   selector: 'app-nivel-lista',
@@ -10,18 +10,26 @@ import { NivelService } from '../../services/nivel.service';
   styleUrls: ['./nivel-lista.component.css']
 })
 export class NivelListaComponent implements OnInit {
+  fasesCadastradas: any[] = [];
+  displayedColumns: string[] = ['world', 'id', 'title'];
 
-  dataSource = new MatTableDataSource<Nivel>()
-  readonly displayedColumns : Array<string> = ['nivel','titulo','acoes']
+  constructor(private phaseService: PhaseService) {}
 
-  constructor(private nivelservice:  NivelService) { }
-
-  ngOnInit(): void {
-    this.nivelservice.GetAll().subscribe(data =>{
-      this.dataSource = new MatTableDataSource(data)
-    })
+  ngOnInit() {
+    this.obterFasesCadastradas();
   }
 
+  obterFasesCadastradas() {
+    this.phaseService.obterFasesCadastradas()
+      .subscribe(
+        response => {
+          this.fasesCadastradas = response as any[];
+        },
+        error => {
+          console.error('Erro ao obter fases cadastradas:', error);
+        }
+      );
+  }
  
 
 }

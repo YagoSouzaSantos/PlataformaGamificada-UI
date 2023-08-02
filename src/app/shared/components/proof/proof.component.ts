@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/core/template/main/services/data.service';
+import { UsuariosService } from 'src/app/core/template/main/services/usuarios.service';
+import { WorldsWizardComponent } from '../worlds-wizard/worlds-wizard.component';
 import { Answer, Question } from './model/question';
 import { QuestionService } from './services/question.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { WorldsWizardComponent } from '../worlds-wizard/worlds-wizard.component';
-import { DataService } from 'src/app/core/template/main/services/data.service';
 
 @Component({
   selector: 'app-proof',
@@ -18,13 +19,16 @@ export class ProofComponent implements OnInit {
   correctAnswersCount: number = 0;
   phaseId: number;
   audio: any;
+  mostrarCorreto = false;
+  mostrarErrado = false;
 
   constructor(
     private questionService: QuestionService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private usuariosService: UsuariosService
   ) { }
 
   ngOnInit() {
@@ -37,9 +41,8 @@ export class ProofComponent implements OnInit {
       this.openDialog();
     }, 500);
 
-    this.audio = new Audio('../../../../assets/audio/music_zapsplat_road_to_ankara.mp3');
-
-    this.audio.play();
+    // this.audio = new Audio('../../../../assets/audio/music_zapsplat_road_to_ankara.mp3');
+    // this.audio.play();
   }
 
   loadQuestions() {
@@ -63,13 +66,48 @@ export class ProofComponent implements OnInit {
 
       this.dataService.increasePoints(50);
 
+      this.mostrarCorreto = true;
+      setTimeout(() => {
+        this.mostrarCorreto = false;
+      }, 5000);
+
+      const audio = new Audio('../../../../assets/audio/win.wav');
+      audio.play();
+    }
+    else {
+
+      this.mostrarErrado = true;
+      setTimeout(() => {
+        this.mostrarErrado = false;
+      }, 5000);
+
+      const audio = new Audio('../../../../assets/audio/wrong.wav');
+      audio.play();
+
     }
     this.selectedAnswer = undefined;
     this.currentQuestionIndex++;
 
     if (this.currentQuestionIndex === this.questions.length) {
-      alert(`Pontuação final: ${this.correctAnswersCount} de ${this.questions.length}`);
-      this.audio.pause();
+      const totalQuestions = this.questions.length;
+      const correctPercentage = (this.correctAnswersCount / totalQuestions) * 100;
+
+      if (correctPercentage >= 60) {
+        this.openDialogEndgame(`Parabéns! Você atingiu ${correctPercentage.toFixed(2)}% de perguntas corretas.`)        
+        this.dataService.increasePoints(200);
+      } else {
+        this.openDialogEndgame(`Pontuação final: ${this.correctAnswersCount} de ${totalQuestions}. Você não atingiu 60% de perguntas corretas.`)
+        this.dataService.increaseLifes(-1);
+      }
+
+      this.usuariosService.atualizarValores(
+        this.dataService.getId(),
+        this.dataService.getPoints(),
+        this.dataService.getLevel(),
+        this.dataService.getFuel(),
+        this.dataService.getLifes(),
+      ).subscribe();
+      
       this.router.navigate(['activities', this.phaseId]);
     }
   }
@@ -80,6 +118,16 @@ export class ProofComponent implements OnInit {
         parameter: 'proof',
         title: 'A prova de conhecimentos',
         imagePath: '../../../assets/images/worlds-wizard/blocked.png'
+      }
+    });
+  }
+
+  openDialogEndgame(text: any): void {
+    const dialogRef = this.dialog.open(WorldsWizardComponent, {
+      data: {
+        text: text,        
+        title: '!!! Fim de jogo !!!',
+        imagePath: '../../../assets/images/worlds-wizard/instructions.png'
       }
     });
   }

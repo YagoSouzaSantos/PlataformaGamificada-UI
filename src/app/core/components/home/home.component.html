@@ -2,27 +2,29 @@
     <mat-sidenav mode="side" opened>
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
+            <a mat-list-item href="ranking/lista">
+                <mat-icon>insights</mat-icon>Ranking de jogadores
+            </a>
+            
             <a mat-list-item routerLink="/nivel/lista">
-                <mat-icon>leaderboard</mat-icon>Módulos
+                <mat-icon>hotel_class</mat-icon>Fases
             </a>
+            
             <a mat-list-item routerLink="/material/lista">
-                <mat-icon>auto_stories</mat-icon>Material de estudo
+                <mat-icon>auto_stories</mat-icon>Atividades de estudo
             </a>
-            <a mat-list-item href="#">
-                <mat-icon>laptop_chromebook</mat-icon>Atividades
+
+            <a mat-list-item href="avaliacao/cadastro">
+                <mat-icon>laptop_chromebook</mat-icon>Avaliações
             </a>
-            <a mat-list-item href="#">
-                <mat-icon>school</mat-icon>Avaliações
-            </a>
+            
             <a mat-list-item routerLink="/usuario/lista">
                 <mat-icon>person</mat-icon>Usuários
             </a>
-            <a mat-list-item href="#">
-                <mat-icon>insights</mat-icon>Desempenho
-            </a>
+            
             <a mat-list-item href="#">
                 <mat-icon>logout</mat-icon>Sair
-            </a>
+            </a> 
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

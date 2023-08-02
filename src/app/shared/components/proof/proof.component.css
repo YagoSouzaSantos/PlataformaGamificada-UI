@@ -80,3 +80,56 @@
     transform: translate(-50%, -50%) scale(1);
   }
 }
+
+
+
+/* Defina o tamanho, a cor e a posição inicial do quadrado */
+.square {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+
+/* Defina a animação */
+@keyframes showSquare {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Aplique a animação ao quadrado */
+.square {
+  animation-name: showSquare;
+  animation-duration: 5s;
+}
+
+/* Garanta que o quadrado seja visível por 3 segundos */
+.square::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: hideSquare 3s;
+}
+
+@keyframes hideSquare {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+

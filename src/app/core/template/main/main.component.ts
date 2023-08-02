@@ -19,7 +19,7 @@ export class MainComponent implements OnInit{
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           // Verifique se a rota atual é a rota específica na qual você deseja ocultar o componente
-          if (this.router.url === '/') {
+          if (this.router.url === '/home') {
             this.showComponent = false; // Oculte o componente
           } else {
             this.showComponent = true; // Exiba o componente

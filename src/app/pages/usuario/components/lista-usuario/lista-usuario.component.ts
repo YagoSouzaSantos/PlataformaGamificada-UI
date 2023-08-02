@@ -13,7 +13,7 @@ import { UsuarioService } from '../../services/usuario.service';
 export class ListaUsuarioComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Usuario>()
-  readonly displayedColumns: Array<string> = ['imagem', 'nome', 'email', 'acoes']
+  readonly displayedColumns: Array<string> = ['nome', 'email']
 
   constructor(private usuarioService: UsuarioService) { }
 

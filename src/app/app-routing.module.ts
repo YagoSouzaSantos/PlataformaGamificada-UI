@@ -10,12 +10,12 @@ import { EarthComponent } from './pages/mundosDeEstudo/planets/earth/earth.compo
 import { ActivitiesComponent } from './shared/components/acivities/activities.component';
 import { ComponenteXGuard } from './shared/components/componente-x-guard/componente-x-guard.component';
 import { ProofComponent } from './shared/components/proof/proof.component';
+import { AvatarSelectComponent } from './shared/components/avatar-select/avatar-select.component';
 
 
 const routes: Routes = [
   {
     path: '', component: LoginComponent,
-    // canActivate: [AuthGuard]
   },
    { path: 'login', component: LoginComponent },
   { path: 'componentex', component: ComponenteXGuard },
@@ -25,6 +25,9 @@ const routes: Routes = [
   { path: 'activities/:phaseId', component: ActivitiesComponent },
   { path: 'mundosdeestudo',component: MundosDeEstudoComponent },
   { path: 'proof/:phaseId',component: ProofComponent },
+  { path: 'avatarselect',component: AvatarSelectComponent },
+  
+
   
   { path: 'nivel', loadChildren: () => import('./pages/nivel/nivel.module').then(m => m.NivelModule) },
   { path: 'avaliacao', loadChildren: () => import('./pages/avaliacao/avaliacao.module').then(m => m.AvaliacaoModule) },

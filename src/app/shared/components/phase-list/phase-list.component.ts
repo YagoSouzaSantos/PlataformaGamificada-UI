@@ -1,3 +1,5 @@
+import { UsuariosService } from './../../../core/template/main/services/usuarios.service';
+import { DataService } from './../../../core/template/main/services/data.service';
 import { Component, OnInit, Input, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { PhaseService } from './services/phase.service';
 import { Phase } from './models/phase';
@@ -19,6 +21,8 @@ export class PhaseListComponent implements OnInit, AfterViewChecked  {
 
   constructor(
     private phaseService: PhaseService,
+    private dataService: DataService,
+    private usuariosService: UsuariosService,
     private cdr: ChangeDetectorRef,
     private router: Router
   ) { }
@@ -63,6 +67,14 @@ export class PhaseListComponent implements OnInit, AfterViewChecked  {
   }
   
   goToActivities(phaseId: number) {
+    this.dataService.increaseFuel(-10);
+    this.usuariosService.atualizarValores(
+      this.dataService.getId(),
+      this.dataService.getPoints(),
+      this.dataService.getLevel(),
+      this.dataService.getFuel(),
+      this.dataService.getLifes(),
+    ).subscribe();
     this.router.navigate(['activities', phaseId]);
   }
 
