@@ -1,36 +1,39 @@
 <app-header>Adicionar atividade para estudo</app-header>
+
 <div class="content">
   <mat-card class="card">
 
-    <mat-card-title>Dados da nova atividade</mat-card-title>
+    <mat-card-header>
+      <mat-card-title>Dados da atividade</mat-card-title>
+    </mat-card-header>
 
-    <mat-form-field class="full-width ">
-      <mat-label>Mundo</mat-label>
-      <mat-select [(ngModel)]="mundoSelecionado" name="mundo" (ngModelChange)="atualizarFases()">
-        <mat-option *ngFor="let mundo of mundos" [value]="mundo.id">
-          {{ mundo.descricao }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-card-content>
+
+      <mat-form-field class="full-width " appearance="outline">
+        <mat-label>Mundo</mat-label>
+        <mat-select [(ngModel)]="mundoSelecionado" name="mundo" (ngModelChange)="atualizarFases()">
+          <mat-option *ngFor="let mundo of mundos" [value]="mundo.id">
+            {{ mundo.descricao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
 
-    <mat-form-field class="full-width ">
-      <mat-label>Fase</mat-label>
-      <mat-select [(ngModel)]="faseSelecionada" name="fase">
-        <mat-option *ngFor="let fase of fases" [value]="fase.id">
-          {{ fase.title }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Fase</mat-label>
+        <mat-select [(ngModel)]="faseSelecionada" name="fase">
+          <mat-option *ngFor="let fase of fases" [value]="fase.id">
+            {{ fase.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <input class="input" type="file" (change)="onFileSelected($event)" name="file">
 
-    <mat-label>Carregar documento</mat-label>
-    
-    <input class="input" type="file" (change)="onFileSelected($event)" name="file" class="full-width">
+      <mat-divider></mat-divider>
 
-    <mat-divider></mat-divider>
+      <button mat-raised-button color="primary" (click)="enviarFormulario()">Enviar</button>
+    </mat-card-content>
 
-    <button mat-raised-button color="primary" (click)="enviarFormulario()">Enviar</button>
 
   </mat-card>
 

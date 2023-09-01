@@ -2,20 +2,20 @@
 <div>
     <mat-card class="divCard">
         <form (ngSubmit)="submitForm()" #myForm="ngForm">
-            <mat-form-field>
-              <mat-label>Title</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-label>Título da fase</mat-label>
               <input matInput name="title" [(ngModel)]="formData.title" required>
             </mat-form-field>
           
-            <mat-form-field>
-              <mat-label>World</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-label>Mundo de estudo</mat-label>
               <mat-select name="world" [(ngModel)]="formData.world" required>
                 <mat-option *ngFor="let option of worldOptions" [value]="option.value">
                   {{ option.label }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-divider></mat-divider>
+            <br>
             <button mat-raised-button color="primary" [disabled]="!myForm.valid">Salvar nova fase</button>
           </form>          
     </mat-card>

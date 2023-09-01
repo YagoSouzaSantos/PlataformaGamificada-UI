@@ -16,6 +16,9 @@ import { ComponenteXGuard } from 'src/app/shared/components/componente-x-guard/c
 import {MatRadioModule} from '@angular/material/radio';
 import { ProofComponent } from 'src/app/shared/components/proof/proof.component';
 import { UsuarioModule } from '../usuario/usuario.module';
+import { WorldsWizardComponent } from 'src/app/shared/components/worlds-wizard/worlds-wizard.component';
+import { WorldsWizardModule } from 'src/app/shared/components/worlds-wizard/worlds-wizard.module';
+import { BossComponent } from 'src/app/shared/components/boss/boss.component';
 
 
 
@@ -30,10 +33,11 @@ import { UsuarioModule } from '../usuario/usuario.module';
     MatCardModule,
     MatButtonModule,
     MatRadioModule,
-    UsuarioModule
+    UsuarioModule,
+    WorldsWizardModule
   ],
-  declarations: [MundosDeEstudoComponent, PhaseListComponent, EarthComponent, ActivitiesComponent, ComponenteXGuard, ProofComponent],
-  exports: [MundosDeEstudoComponent, PhaseListComponent, EarthComponent,  ActivitiesComponent],
+  declarations: [MundosDeEstudoComponent, PhaseListComponent, EarthComponent, ActivitiesComponent, ComponenteXGuard, ProofComponent, BossComponent],
+  exports: [MundosDeEstudoComponent, PhaseListComponent, EarthComponent,  ActivitiesComponent, BossComponent],
   providers: [PhaseService],
   schemas: [NO_ERRORS_SCHEMA]
 })

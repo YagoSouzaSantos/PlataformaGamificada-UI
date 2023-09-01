@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,6 +17,8 @@ const httpOptions = {
 })
 export class NovoUsuarioComponent implements OnInit {
   usuarioForm: FormGroup;
+
+  apiUrl = environment.apiUrl + '/usuarios';
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -44,7 +47,7 @@ export class NovoUsuarioComponent implements OnInit {
       pontuacao: 0 // Valor padrão para pontuacao
     };
 
-    this.http.post('http://localhost:8091/usuarios', usuarioData, httpOptions)
+    this.http.post(this.apiUrl, usuarioData, httpOptions)
       .subscribe(
         response => {
           alert('Novo usuário cadastrado com sucesso!');

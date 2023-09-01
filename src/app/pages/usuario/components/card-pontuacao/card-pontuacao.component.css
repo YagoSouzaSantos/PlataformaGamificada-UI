@@ -42,3 +42,13 @@
 .favorite mat-icon {
   color: red;
 }
+
+.score {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 12px;
+ 
+}

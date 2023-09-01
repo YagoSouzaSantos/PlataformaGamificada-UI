@@ -12,9 +12,18 @@ export class DataService {
   private avatar: number;
   private fuel: number;
   private lifes: number;
+  private score: number;
   maxFuel = 100;
 
   constructor() { }
+
+  getScore(): number {
+    return this.score;
+  }
+
+  setScore(score: number): void {
+    this.score = score;
+  }
 
   getLifes(): number {
     return this.lifes;
@@ -75,6 +84,15 @@ export class DataService {
 
   increasePoints(pointsToAdd: number): void {
     this.points += pointsToAdd;
+  }
+
+  increaseScore(scoreToAdd: number): void {
+    this.score += scoreToAdd;
+  }
+
+  
+  increaseLevel(levelToAdd: number): void {
+    this.level += levelToAdd;
   }
 
 

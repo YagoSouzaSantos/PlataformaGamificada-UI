@@ -1,35 +1,26 @@
 .card {
-    margin-top: 20px;
-    padding: 20px;
-    width: 500px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.divCard {
-    margin-top: 20px;
-    padding: 20px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;  
-}
-
-.mat-form-field.mat-form-field {
-    width: 75%;    
-}
-
-.container {
-    justify-content: center;
 }
 
 button {
     margin-top: 15px;
 }
 
-.mat-form-field {
+.full-width {
     width: 100%;
+}
+
+.question {
+    width: 50%;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Phase } from 'src/app/pages/nivel/models/Phase';
 import { PhaseService } from 'src/app/pages/nivel/services/phase.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -43,14 +44,13 @@ export class AvaliacaoCadastroComponent implements OnInit {
 
   atualizarFases(): void {
     this.phaseService.getFasesPorMundo(this.mundoSelecionado).subscribe((data: any) => {
-      console.log(data);
       this.fases = data.content.map((fase: any) => fase);
     });
   }
 
   submitForm() {
 
-    const url = `http://localhost:8091/phase/${this.faseSelecionada}/questions`;
+    const url = `${environment.apiUrl}/phase/${this.faseSelecionada}/questions/${this.mundoSelecionado}/`;
 
     this.http.post(url, this.formData).subscribe(
       (response) => {

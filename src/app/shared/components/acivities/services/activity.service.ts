@@ -2,12 +2,13 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Activity } from '../models/activity';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivityService {
-  private readonly url = 'http://localhost:8091/activity';
+  private readonly url = environment.apiUrl + '/activity';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class ActivityService {
     return this.http.get<Activity[]>(phaseUrl);
   }
 
-  private apiUrl = 'http://localhost:8091/activity/download/';
+  private apiUrl = environment.apiUrl + '/activity/download/';
 
   downloadFile(filename: string): Observable<HttpResponse<ArrayBuffer>> {
     const url = `${this.apiUrl}${filename}`;

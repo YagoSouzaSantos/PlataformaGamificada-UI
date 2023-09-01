@@ -1,6 +1,4 @@
 .earth-background {
-  display: flex;
-  flex-wrap: wrap;
   gap: 5px;
   justify-content: center;
   background-position: center center;
@@ -10,12 +8,6 @@
 h1 {
   font-size: 30px;
   text-align: center;
-  top: 15px;
-  margin: 20px; 
   font-weight: bold;
-}
-
-mat-card {
-  max-width: 750px;
-  margin: 20px; 
+  padding: 30px;  
 }

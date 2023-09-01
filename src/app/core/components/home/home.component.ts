@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
@@ -19,14 +20,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private musicaService: MusicaService
-    
+    private musicaService: MusicaService,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
 
     this.musicaService.pausarMusica();
-
   }
 
   

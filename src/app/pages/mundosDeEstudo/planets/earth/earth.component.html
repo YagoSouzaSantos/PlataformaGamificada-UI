@@ -3,11 +3,9 @@
 </div>
 
 <div *ngIf="!showComponentX" class="earth-background" [style.background-image]="'url(' + backgroundImage + ')'">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{planet.title}}</mat-card-title>
-    </mat-card-header>
-  </mat-card>
+  
+  <h1>{{planet.title}}</h1>
+  
   <app-phase-list [planet]="planet.id"></app-phase-list>
 </div>
 

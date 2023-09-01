@@ -30,7 +30,8 @@ export class ShopComponent {
       this.dataService.getPoints(),
       this.dataService.getLevel(),
       this.dataService.getFuel(),
-      this.dataService.getLifes()
+      this.dataService.getLifes(),
+      this.dataService.getScore()
     ).subscribe( );
   }
 
@@ -43,7 +44,8 @@ export class ShopComponent {
       this.dataService.getPoints(),
       this.dataService.getLevel(),
       this.dataService.getFuel(),
-      this.dataService.getLifes()
+      this.dataService.getLifes(),
+      this.dataService.getScore()
     ).subscribe( );
   }
 }

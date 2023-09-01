@@ -61,8 +61,11 @@ export class LoginComponent implements OnInit {
             this.dataService.setUser(response.nome)
             this.dataService.setLifes(response.vidas)
             this.dataService.setFuel(response.combustivel)
+            this.dataService.setScore(response.score)
             
             this.usuariosService.atualizarAcesso(decodedToken.sub).subscribe();
+
+            this.confereUltimoAcesso(response.ultimoAcesso);
             
 
             if (response.avatar == 0) {
@@ -86,5 +89,16 @@ export class LoginComponent implements OnInit {
   decodeToken(token: any): any {
     const decoded = jwt_decode(token);
     return decoded;
+  }
+
+  confereUltimoAcesso(ultimoAcesso : any) {
+    const dataConvertida = new Date(ultimoAcesso);
+    
+    const dataAtual = new Date()
+
+    if (dataAtual > dataConvertida) {
+      this.dataService.setFuel(100);
+      this.dataService.setLifes(3);
+    }
   }
 }

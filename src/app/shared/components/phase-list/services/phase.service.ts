@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Phase } from '../models/phase';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -15,7 +16,7 @@ const httpOptions = {
 })
 export class PhaseService {
 
-private readonly url = 'http://localhost:8091/phase';
+private readonly url = environment.apiUrl + '/phase';
 
   constructor(private http: HttpClient) { }
 

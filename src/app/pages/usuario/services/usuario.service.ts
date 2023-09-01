@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/Usuario';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders ({
@@ -14,7 +15,7 @@ const httpOptions = {
 })
 export class UsuarioService {
 
-  private readonly url = 'http://localhost:8091/usuarios';
+  private readonly url = environment.apiUrl + '/usuarios';
 
   constructor(private http: HttpClient) { }
 

@@ -21,12 +21,9 @@ export class ListaMaterialAuxiliarComponent implements OnInit {
     this.activityService.getAll().subscribe(
       (data: any) => {
         this.atividades = data.content; 
-        console.log('data:', data.content);
-        console.log('atividades:', this.atividades);
-
       },
       (error) => {
-        console.error('Erro ao carregar as atividades:', error);
+
       }
     );
   }

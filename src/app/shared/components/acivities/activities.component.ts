@@ -5,6 +5,7 @@ import { UsuariosService } from 'src/app/core/template/main/services/usuarios.se
 import { WorldsWizardComponent } from '../worlds-wizard/worlds-wizard.component';
 import { DataService } from './../../../core/template/main/services/data.service';
 import { ActivityService } from './services/activity.service';
+import { HistoryService } from '../../services/history.service';
 
 @Component({
   selector: 'app-activities',
@@ -26,6 +27,7 @@ export class ActivitiesComponent implements OnInit {
     private dialog: MatDialog,
     private dataService: DataService,
     private usuariosService: UsuariosService,
+    private historyService: HistoryService,
     private router: Router
   ) { }
 
@@ -76,10 +78,23 @@ export class ActivitiesComponent implements OnInit {
       this.dataService.getLevel(),
       this.dataService.getFuel(),
       this.dataService.getLifes(),
+      this.dataService.getScore()
     ).subscribe(
       response => {
         this.downloadFile(activity.title)
-        
+       
+        const historyForm = {
+          nomeUsuario: this.dataService.getUser(),
+          titulo: activity.title
+        }
+        this.historyService.cadastrarHistory(historyForm).subscribe(
+          response => {
+            console.log('Resposta da API:', response); 
+          },
+          error => {
+            console.error('Erro na chamada POST:', error);
+          }
+        );  
       },
       error => {
         console.error('Erro ao atualizar usuário:', error);
@@ -113,13 +128,12 @@ export class ActivitiesComponent implements OnInit {
   }
 
   goToProof() {
-    if(this.dataService.getLifes() == 0){
+    if(this.dataService.getLifes() < 1){
       this.openDialogBlocked("Sem vidas disponíveis para realizar teste de conhecimento. Retorne amanhã!")
     }
     else {
       this.router.navigate(['/proof', this.phaseId]);
     }
-
   }
 
   openDialogBlocked(text: any): void {

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 
-const URL = 'http://localhost:8091/worldswizard/';
+const URL = environment.apiUrl + '/worldswizard/';
 
 @Component({
   selector: 'app-worlds-wizard',

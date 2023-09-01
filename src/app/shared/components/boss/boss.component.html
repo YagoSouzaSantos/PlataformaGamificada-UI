@@ -1,0 +1,30 @@
+<div class="background"></div>
+<img class="center-image" src="../../../../assets/images/backgrounds/boss.png" alt="Imagem no centro">
+<div class="content">
+  <div>
+    <div *ngIf="questions">
+      <mat-card class="card">
+        <h2>Pergunta {{ currentQuestionIndex + 1 }} de {{ questions.length }}</h2>
+        <p>{{ questions[currentQuestionIndex].text }}</p>
+
+
+        <p *ngFor="let answer of questions[currentQuestionIndex].answers">
+          <label>
+            <input type="radio" name="answer" [value]="answer" (click)="selectAnswer(answer)">
+            {{ answer.text }}
+          </label>
+        </p>
+
+        <button mat-raised-button color="primary" (click)="submitAnswer()">Confirmar</button>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="mostrarCorreto" class="square">
+    <img src="../../../../assets/images/proof/correct.png">
+  </div>
+
+  <div *ngIf="mostrarErrado" class="square">
+    <img src="../../../../assets/images/proof/phoenix.png">
+  </div>
+  <app-card-pontuacao></app-card-pontuacao>
+</div>

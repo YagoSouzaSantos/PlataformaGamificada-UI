@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/core/template/main/services/data.service';
 import { WorldsWizardComponent } from 'src/app/shared/components/worlds-wizard/worlds-wizard.component';
 import { MusicaService } from 'src/app/shared/services/musica.service';
 
@@ -29,6 +30,7 @@ export class MundosDeEstudoComponent implements OnInit {
 
   constructor(
     private musicaService: MusicaService,
+    private dataService: DataService,
     private dialog: MatDialog,
     private router: Router) { }
 
@@ -61,7 +63,7 @@ export class MundosDeEstudoComponent implements OnInit {
   }
 
   onPlanetClick(planet: any) {
-    if (planet.id == 3) {
+    if(this.dataService.getLevel() < planet.id){
       this.phaseBlocked();
     }
     else {

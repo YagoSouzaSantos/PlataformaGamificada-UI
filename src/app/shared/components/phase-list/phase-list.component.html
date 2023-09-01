@@ -10,4 +10,17 @@
       </div>
     </mat-card>
   </div>  
+
+  <div class="card">
+    <mat-card (click)="goToBoss()" >
+      <mat-card-title>Prove seu conhecimento ao Mago dos mundos!</mat-card-title>
+      <div class="phase" fxLayout="column" fxLayoutAlign="center center">
+        <img [src]="bossImage">
+        <p></p>
+      </div>
+    </mat-card>
+  </div>
+
+  <app-card-pontuacao></app-card-pontuacao>
+  <app-to-home-button></app-to-home-button>
 </div>

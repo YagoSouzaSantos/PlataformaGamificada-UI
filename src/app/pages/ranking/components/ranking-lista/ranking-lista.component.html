@@ -1,0 +1,29 @@
+<app-header>Dashboard</app-header>
+<div class="content">
+  <div class="flex">
+
+    <div>
+      <h1>Níveis</h1>
+      <ngx-charts-pie-chart [view]="view" [results]="chartDataPie" [labels]="true" [legend]="false"></ngx-charts-pie-chart>
+    </div>
+
+    <div>     
+      <mat-list>
+        <h1>Últimos Acessos</h1>
+        <mat-list-item *ngFor="let item of filteredPlayersData">
+          <span><b>{{item.nome}}</b>: {{item.ultimoAcesso | dateBR}} </span>
+        </mat-list-item>
+       </mat-list>
+    </div>
+  </div>
+
+
+  <h1>Ranking de Jogadores</h1>
+  <div style="display: block;">
+    <ngx-charts-bar-vertical [results]="chartData" [xAxis]="true" [yAxis]="true" [legend]="true" [showXAxisLabel]="true"
+      [showYAxisLabel]="true" xAxisLabel="Jogadores" yAxisLabel="Pontuações">
+    </ngx-charts-bar-vertical>
+  </div>
+
+
+</div>

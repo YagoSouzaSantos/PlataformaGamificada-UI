@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/core/template/main/services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-avatar-select',
@@ -32,7 +33,7 @@ export class AvatarSelectComponent implements OnInit {
   selecionarAvatar(id: number) {
     const index1 = this.dataService.getId();
 
-    const url = `http://localhost:8091/usuarios/${index1}/${id}`;
+    const url = `${environment.apiUrl}/usuarios/${index1}/${id}`;
 
     this.http.put(url, null).subscribe(
       (response) => {

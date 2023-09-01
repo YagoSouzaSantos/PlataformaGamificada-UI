@@ -3,9 +3,10 @@ import { PhaseService } from '../../nivel/services/phase.service';
 import { Phase } from '../../nivel/models/Phase';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
-const API_URL = "http://localhost:8091/activity/upload";
+const API_URL = environment.apiUrl + "/activity/upload";
 @Component({
   selector: 'app-add-material',
   templateUrl: './add-material.component.html',

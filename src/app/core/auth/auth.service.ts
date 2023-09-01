@@ -5,6 +5,7 @@ import { throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 import { TokenService } from '../Token/token.service';
 import { User } from '../user/user';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -12,7 +13,9 @@ import { User } from '../user/user';
 })
 export class AuthService {
 
-  API_URL = 'http://localhost:8091/auth';
+  endpoint = '/auth';
+
+  API_URL = environment.apiUrl + this.endpoint;
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 

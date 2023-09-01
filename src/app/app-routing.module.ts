@@ -1,3 +1,5 @@
+import { RankingModule } from './pages/ranking/ranking.module';
+import { RankingComponent } from './pages/ranking/ranking.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './core/components/home/home.component';
@@ -11,6 +13,7 @@ import { ActivitiesComponent } from './shared/components/acivities/activities.co
 import { ComponenteXGuard } from './shared/components/componente-x-guard/componente-x-guard.component';
 import { ProofComponent } from './shared/components/proof/proof.component';
 import { AvatarSelectComponent } from './shared/components/avatar-select/avatar-select.component';
+import { BossComponent } from './shared/components/boss/boss.component';
 
 
 const routes: Routes = [
@@ -26,6 +29,7 @@ const routes: Routes = [
   { path: 'mundosdeestudo',component: MundosDeEstudoComponent },
   { path: 'proof/:phaseId',component: ProofComponent },
   { path: 'avatarselect',component: AvatarSelectComponent },
+  { path: 'boss/:planet',component: BossComponent },
   
 
   
@@ -33,6 +37,8 @@ const routes: Routes = [
   { path: 'material', loadChildren: () => import('./pages/material-auxiliar/material-auxiliar.module').then(m => m.MaterialAuxiliarModule) },
   { path: 'usuario', loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: 'avaliacao', loadChildren: () => import('./pages/avaliacao/avaliacao.module').then(m => m.AvaliacaoModule) },
+  { path: 'ranking', loadChildren: () => import('./pages/ranking/ranking.module').then(m => m.RankingModule) },
+
 
 ];
 

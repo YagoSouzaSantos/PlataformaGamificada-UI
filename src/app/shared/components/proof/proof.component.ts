@@ -65,6 +65,7 @@ export class ProofComponent implements OnInit {
       this.correctAnswersCount++;
 
       this.dataService.increasePoints(50);
+      this.dataService.increaseScore(100);
 
       this.mostrarCorreto = true;
       setTimeout(() => {
@@ -92,11 +93,17 @@ export class ProofComponent implements OnInit {
       const totalQuestions = this.questions.length;
       const correctPercentage = (this.correctAnswersCount / totalQuestions) * 100;
 
-      if (correctPercentage >= 60) {
-        this.openDialogEndgame(`Parabéns! Você atingiu ${correctPercentage.toFixed(2)}% de perguntas corretas.`)        
+      if (correctPercentage >= 90) {
+        this.openDialogEndgame(`Parabéns! Você atingiu ${correctPercentage.toFixed(2)}% de perguntas corretas.`);
         this.dataService.increasePoints(200);
+      } else if (correctPercentage >= 75 && correctPercentage < 90) {
+        this.openDialogEndgame(`Parabéns! Você atingiu ${correctPercentage.toFixed(2)}% de perguntas corretas.`);
+        this.dataService.increasePoints(150);
+      } else if (correctPercentage >= 60 && correctPercentage < 75) {
+        this.openDialogEndgame(`Parabéns! Você atingiu ${correctPercentage.toFixed(2)}% de perguntas corretas.`);
+        this.dataService.increasePoints(100);
       } else {
-        this.openDialogEndgame(`Pontuação final: ${this.correctAnswersCount} de ${totalQuestions}. Você não atingiu 60% de perguntas corretas.`)
+        this.openDialogEndgame(`Pontuação final: ${this.correctAnswersCount} de ${totalQuestions}. Você não atingiu 60% de perguntas corretas.`);
         this.dataService.increaseLifes(-1);
       }
 
@@ -106,6 +113,7 @@ export class ProofComponent implements OnInit {
         this.dataService.getLevel(),
         this.dataService.getFuel(),
         this.dataService.getLifes(),
+        this.dataService.getScore()
       ).subscribe();
       
       this.router.navigate(['activities', this.phaseId]);
